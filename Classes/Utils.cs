@@ -1,5 +1,4 @@
 ﻿using FrozenNorth.Gpx;
-using System.IO;
 
 namespace GpxViewer
 {
@@ -8,18 +7,24 @@ namespace GpxViewer
         public static Gpx gpx = null;
         public static event EventHandler GpxLoaded = null;
 
-        public static void OpenFile(string fileName)
+        public static async Task OpenFileAsync(string fileName)
         {
-            gpx = GpxReader.Load(fileName);
+            gpx = await GpxReader.LoadAsync(fileName);
             GpxLoaded?.Invoke(null, EventArgs.Empty);
         }
 
-		public static void SaveFile(string fileName)
+        public static async Task OpenFileAsync(Stream stream)
+        {
+            gpx = await GpxReader.LoadAsync(stream);
+            GpxLoaded?.Invoke(null, EventArgs.Empty);
+        }
+
+        public static async Task SaveFileAsync(string fileName)
 		{
-			GpxWriter.Save(gpx, fileName);
+			await GpxWriter.SaveAsync(gpx, fileName);
 		}
 
-		public static string GetBounds(GpxBounds bounds)
+        public static string GetBounds(GpxBounds bounds)
 		{
 			return (bounds != null) ? bounds.ToString() : "";
 		}
