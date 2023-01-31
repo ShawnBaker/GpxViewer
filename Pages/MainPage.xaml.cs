@@ -1,42 +1,62 @@
-﻿using FrozenNorth.Gpx;
-
-namespace GpxViewer;
+﻿namespace GpxViewer;
 
 public partial class MainPage : ContentPage
 {
+    private bool enableSaveButton = false;
+    private List<string> BuiltinFiles = new List<string>()
+    {
+        "ashland.gpx",
+        "blue_hills.gpx",
+        "fells_loop.gpx",
+        "foxboro.gpx",
+        "mystic_basin_trail.gpx"
+    };
+
     public MainPage()
     {
         InitializeComponent();
+        FilesListView.ItemsSource = BuiltinFiles;
+        FilesListView.ItemSelected += FilesListView_ItemSelected;
 		Utils.GpxLoaded += HandleGpxLoaded;
+#if !WINDOWS && !MACCATALYST
+        LoadButton.IsVisible = false;
+        SaveButton.IsVisible = false;
+#endif
     }
 
-	private void HandleGpxLoaded(object sender, EventArgs e)
+    private void HandleGpxLoaded(object sender, EventArgs e)
 	{
         if (Utils.gpx != null)
         {
             CreatorLabel.Text = Utils.gpx.Creator ?? "";
             VersionLabel.Text = Utils.gpx.Version ?? "";
-            NameLabel.Text = Utils.gpx.Metadata.Name ?? "";
-            DescriptionLabel.Text = Utils.gpx.Metadata.Description ?? "";
-            if (Utils.gpx.Metadata.Author != null)
-            {
-                AuthorLabel.Text = Utils.gpx.Metadata.Author.Name ?? "";
-                EmailLabel.Text = Utils.GetEmail(Utils.gpx.Metadata.Author.Email);
-                LinkLabel.Text = Utils.GetLink(Utils.gpx.Metadata.Author.Link);
-            }
-            CopyrightLabel.Text = Utils.GetCopyright(Utils.gpx.Metadata.Copyright);
-            TimeLabel.Text = Utils.GetTime(Utils.gpx.Metadata.Time);
-            KeywordsLabel.Text = Utils.gpx.Metadata.Keywords ?? "";
-            BoundsLabel.Text = Utils.GetBounds(Utils.gpx.Metadata.Bounds);
-            LinksListView.ItemsSource = Utils.gpx.Metadata.Links;
-            SaveButton.IsEnabled = true;
 		}
-	}
+        else
+        {
+            CreatorLabel.Text = "";
+            VersionLabel.Text = "";
+        }
+        SaveButton.IsEnabled = enableSaveButton;
+    }
 
-	private async void LoadButton_Clicked(object sender, EventArgs e)
+    private async void FilesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        string fileName = (string)e.SelectedItem;
+        if (!string.IsNullOrEmpty(fileName))
+        {
+            using var stream = await FileSystem.OpenAppPackageFileAsync(fileName);
+            FileNameLabel.Text = fileName;
+            enableSaveButton = false;
+            await Utils.OpenFileAsync(stream);
+        }
+    }
+
+    private async void LoadButton_Clicked(object sender, EventArgs e)
     {
         try
         {
+            LoadButton.IsEnabled = false;
+            
             FilePickerFileType fileType = new FilePickerFileType(
                 new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
@@ -52,17 +72,22 @@ public partial class MainPage : ContentPage
             if (result != null)
             {
                 string fileName = result.FullPath;
-                FileNameEntry.Text = Path.GetFileName(fileName);
-                Utils.OpenFile(fileName);
+                FileNameLabel.Text = Path.GetFileName(fileName);
+                enableSaveButton = true;
+                await Utils.OpenFileAsync(fileName);
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        LoadButton.IsEnabled = true;
     }
 
-    private void SaveButton_Clicked(object sender, EventArgs e)
+    private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         string fileName = Path.GetFileNameWithoutExtension(Utils.gpx.FileName) + "_2" + Path.GetExtension(Utils.gpx.FileName);
         fileName = Path.Combine(Path.GetDirectoryName(Utils.gpx.FileName), fileName);
-        Utils.SaveFile(fileName);
+        await Utils.SaveFileAsync(fileName);
 	}
 }

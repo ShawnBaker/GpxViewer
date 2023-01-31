@@ -4,78 +4,31 @@
              x:Class="GpxViewer.MainPage"
 			 Title="Home">
 
-	<ScrollView Orientation="Both">
-		<VerticalStackLayout Spacing="10" Padding="20,10">
+	<ScrollView HorizontalOptions="Center" Orientation="Both" Margin="10">
+		<VerticalStackLayout Spacing="5">
 			<HorizontalStackLayout>
-				<Label Text="File Name:" VerticalTextAlignment="Center"/>
-				<Entry x:Name="FileNameEntry" WidthRequest="400" Margin="10,0,0,0" IsReadOnly="True"/>
-				<Button Text="Load" Margin="10,0,0,0" Clicked="LoadButton_Clicked"/>
+				<Label Text="Files:" WidthRequest="90"/>
+				<Border Padding="5" WidthRequest="300">
+					<ListView x:Name="FilesListView" HeightRequest="240"/>
+				</Border>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="File Name:" WidthRequest="90" VerticalTextAlignment="Center"/>
+				<Label x:Name="FileNameLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Button x:Name="LoadButton" Text="Load" Margin="90,0,0,0" Clicked="LoadButton_Clicked"/>
 				<Button x:Name="SaveButton" Text="Save" Margin="10,0,0,0" IsEnabled="False" Clicked="SaveButton_Clicked"/>
 			</HorizontalStackLayout>
-			<VerticalStackLayout Spacing="5">
-				<Label Text="GPX" HorizontalTextAlignment="Start"/>
-				<Border Padding="5">
-					<VerticalStackLayout Spacing="5">
-						<HorizontalStackLayout>
-							<Label Text="Creator:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="CreatorLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Version:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="VersionLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-					</VerticalStackLayout>
-				</Border>
-			</VerticalStackLayout>
-			<VerticalStackLayout Spacing="5">
-				<Label Text="Metadata" HorizontalTextAlignment="Start"/>
-				<Border Padding="5">
-					<VerticalStackLayout Spacing="5">
-						<HorizontalStackLayout>
-							<Label Text="Name:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="NameLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Description:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="DescriptionLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Author:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="AuthorLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Email:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="EmailLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Link:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="LinkLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Copyright:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="CopyrightLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Time:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="TimeLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Keywords:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="KeywordsLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Bounds:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Label x:Name="BoundsLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Links:" WidthRequest="100" VerticalTextAlignment="Start"/>
-							<Border Padding="5">
-								<ListView x:Name="LinksListView" WidthRequest="400" HeightRequest="100"/>
-							</Border>
-						</HorizontalStackLayout>
-					</VerticalStackLayout>
-				</Border>
-			</VerticalStackLayout>
+			<BoxView BackgroundColor="DarkGray" WidthRequest="390" HeightRequest="2" Margin="0,5,0,5"/>
+			<HorizontalStackLayout>
+				<Label Text="Creator:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="CreatorLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Version:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="VersionLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
 		</VerticalStackLayout>
 	</ScrollView>
 
