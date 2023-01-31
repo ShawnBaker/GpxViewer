@@ -10,6 +10,9 @@
 		<Tab Title="Home">
 			<ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
 		</Tab>
+		<Tab Title="Metadata">
+			<ShellContent ContentTemplate="{DataTemplate local:MetadataPage}" Route="MetadataPage" />
+		</Tab>
 		<Tab Title="Routes">
 			<ShellContent ContentTemplate="{DataTemplate local:RoutesPage}" Route="RoutesPage" />
 		</Tab>

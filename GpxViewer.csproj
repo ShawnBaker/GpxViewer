@@ -38,7 +38,6 @@
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -48,11 +47,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FrozenNorth.Gpx" Version="1.0.0-rc" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\MetadataPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PointPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\RouteTrackPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\RoutesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -67,6 +74,19 @@
 	<ItemGroup>
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Raw\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Gpx\Gpx.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\MetadataPage.xaml.cs">
+	    <DependentUpon>MetadataPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\RouteTrackPage.xaml.cs">
+	    <DependentUpon>RouteTrackPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
