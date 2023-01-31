@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GpxViewer.MetadataPage"
+             Title="Metadata">
+
+	<ScrollView HorizontalOptions="Center" Orientation="Both" Margin="10">
+		<VerticalStackLayout Spacing="5">
+			<HorizontalStackLayout>
+				<Label Text="Name:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="NameLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Description:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="DescriptionLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Author:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="AuthorLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Email:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="EmailLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Link:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="LinkLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Copyright:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="CopyrightLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Time:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="TimeLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Keywords:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="KeywordsLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Bounds:" WidthRequest="90" VerticalTextAlignment="Start"/>
+				<Label x:Name="BoundsLabel" WidthRequest="300" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Links:" WidthRequest="90"/>
+				<Border Padding="5" WidthRequest="300">
+					<ListView x:Name="LinksListView" HeightRequest="100"/>
+				</Border>
+			</HorizontalStackLayout>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>

@@ -4,91 +4,13 @@
              x:Class="GpxViewer.WaypointsPage"
              Title="Waypoints">
 
-	<ScrollView Orientation="Both">
-		<HorizontalStackLayout>
-			<VerticalStackLayout Spacing="5" Padding="20,10">
-				<VerticalStackLayout Spacing="5">
-					<Label Text="Waypoints:" HorizontalOptions="Start"/>
-					<Border Padding="5">
-						<ListView x:Name="WaypointsListView" WidthRequest="200" HeightRequest="508"/>
-					</Border>
-					<Button Text="Map" Clicked="MapButton_Clicked"/>
-				</VerticalStackLayout>
-			</VerticalStackLayout>
-			<VerticalStackLayout Spacing="5" Padding="20,10">
-				<Label Text="Waypoint" Margin="0,5,0,0" HorizontalTextAlignment="Start"/>
-				<Border Padding="5">
-					<VerticalStackLayout Spacing="5">
-						<HorizontalStackLayout>
-							<Label Text="Elevation:" WidthRequest="100"/>
-							<Label x:Name="WaypointElevationLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Time:" WidthRequest="100"/>
-							<Label x:Name="WaypointTimeLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Fix:" WidthRequest="100"/>
-							<Label x:Name="WaypointFixLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Precision:" WidthRequest="100"/>
-							<Label x:Name="WaypointPrecisionLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Name:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointNameLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Comment:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointCommentLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Description:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointDescriptionLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Source:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointSourceLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Mag Var:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointMagVarLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Geoid Height:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointGeoidHeightLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Symbol:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointSymbolLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Type:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointTypeLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Num Sat:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointNumSatLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="DGPS Age:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointDgpsAgeLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="DGPS Id:" WidthRequest="100" VerticalOptions="Start"/>
-							<Label x:Name="WaypointDgpsIdLabel" WidthRequest="400"/>
-						</HorizontalStackLayout>
-						<HorizontalStackLayout>
-							<Label Text="Links:" WidthRequest="100"/>
-							<Border Padding="10">
-								<ListView x:Name="WaypointLinksListView" WidthRequest="400" HeightRequest="100"/>
-							</Border>
-						</HorizontalStackLayout>
-					</VerticalStackLayout>
-				</Border>
-			</VerticalStackLayout>
-		</HorizontalStackLayout>
+	<ScrollView HorizontalOptions="Center" Orientation="Both" Margin="10">
+		<VerticalStackLayout Spacing="5">
+			<Border Padding="5">
+				<ListView x:Name="WaypointsListView" WidthRequest="200" HeightRequest="400"/>
+			</Border>
+			<Button Text="Map" Clicked="MapButton_Clicked"/>
+		</VerticalStackLayout>
 	</ScrollView>
 
 </ContentPage>

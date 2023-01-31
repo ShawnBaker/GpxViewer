@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GpxViewer.PointPage"
+             Title="Point">
+
+	<ScrollView HorizontalOptions="Center" Orientation="Both" Margin="10">
+		<VerticalStackLayout Spacing="5">
+			<HorizontalStackLayout>
+				<Label Text="Latitude:" WidthRequest="100"/>
+				<Label x:Name="LatitudeLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Longitude:" WidthRequest="100"/>
+				<Label x:Name="LongitudeLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Elevation:" WidthRequest="100"/>
+				<Label x:Name="ElevationLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Time:" WidthRequest="100"/>
+				<Label x:Name="TimeLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Fix:" WidthRequest="100"/>
+				<Label x:Name="FixLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Precision:" WidthRequest="100"/>
+				<Label x:Name="PrecisionLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Name:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="NameLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Comment:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="CommentLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Description:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="DescriptionLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Source:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="SourceLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Mag Var:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="MagVarLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Geoid Height:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="GeoidHeightLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Symbol:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="SymbolLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Type:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="TypeLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Num Sat:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="NumSatLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="DGPS Age:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="DgpsAgeLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="DGPS Id:" WidthRequest="100" VerticalOptions="Start"/>
+				<Label x:Name="DgpsIdLabel" WidthRequest="290" BackgroundColor="LightGray"/>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Links:" WidthRequest="100"/>
+				<Border Padding="5" WidthRequest="290">
+					<ListView x:Name="LinksListView" HeightRequest="100"/>
+				</Border>
+			</HorizontalStackLayout>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>

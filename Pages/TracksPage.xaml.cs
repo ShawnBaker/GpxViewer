@@ -7,14 +7,15 @@ public partial class TracksPage : ContentPage
 	public TracksPage()
 	{
 		InitializeComponent();
-		Utils.GpxLoaded += HandleGpxLoaded;
-		TracksListView.ItemSelected += TracksListView_ItemSelected;
-		SegmentsListView.ItemSelected += SegmentsListView_ItemSelected;
-		PointsListView.ItemSelected += PointsListView_ItemSelected;
+        Utils.GpxLoaded += HandleGpxLoaded;
+        TracksListView.ItemTapped += TracksListView_ItemTapped;
+        TracksListView.ItemSelected += TracksListView_ItemSelected;
+        SegmentsListView.ItemSelected += SegmentsListView_ItemSelected;
+        PointsListView.ItemTapped += PointsListView_ItemTapped;
 		HandleGpxLoaded(null, EventArgs.Empty);
 	}
 
-	private void HandleGpxLoaded(object sender, EventArgs e)
+    private void HandleGpxLoaded(object sender, EventArgs e)
 	{
 		if (Utils.gpx != null)
 		{
@@ -26,63 +27,47 @@ public partial class TracksPage : ContentPage
 		}
 	}
 
-	private void TracksListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    private void TracksListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        var track = (GpxTrack)e.Item;
+        if (track != null)
+		{
+            Navigation.PushAsync(new RouteTrackPage(track));
+        }
+    }
+
+    private void TracksListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 	{
-		var track = (GpxTrack)TracksListView.SelectedItem;
+		var track = (GpxTrack)e.SelectedItem;
 		if (track != null)
 		{
-			TrackCommentLabel.Text = track.Comment ?? "";
-			TrackDescriptionLabel.Text = track.Description ?? "";
-			TrackSourceLabel.Text = track.Source ?? "";
-			TrackNumberLabel.Text = Utils.GetUInt(track.Number);
-			TrackTypeLabel.Text = track.Type ?? "";
-			TrackLinksListView.ItemsSource = track.Links;
 			SegmentsListView.ItemsSource = track.Segments;
 			if (track.Segments.Count > 0)
 			{
 				SegmentsListView.SelectedItem = track.Segments[0];
 			}
-		}
+        }
 	}
 
-	private void SegmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    private void SegmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 	{
 		var segment = (GpxTrackSegment)SegmentsListView.SelectedItem;
 		if (segment != null)
 		{
 			PointsListView.ItemsSource = segment.Points;
-			if (segment.Points.Count > 0)
-			{
-				PointsListView.SelectedItem = segment.Points[0];
-			}
 		}
 	}
 
-	private void PointsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-	{
-		var point = (GpxPoint)PointsListView.SelectedItem;
-		if (point != null)
-		{
-			PointElevationLabel.Text = Utils.GetDouble(point.Elevation);
-			PointFixLabel.Text = Utils.GetFix(point.Fix);
-			PointTimeLabel.Text = Utils.GetTime(point.Time);
-			PointPrecisionLabel.Text = Utils.GetPrecision(point);
-			PointNameLabel.Text = point.Name ?? "";
-			PointCommentLabel.Text = point.Comment ?? "";
-			PointDescriptionLabel.Text = point.Description ?? "";
-			PointSourceLabel.Text = point.Source ?? "";
-			PointMagVarLabel.Text = Utils.GetDouble(point.MagneticVariation);
-			PointGeoidHeightLabel.Text = Utils.GetDouble(point.GeoidHeight);
-			PointSymbolLabel.Text = point.SymbolName ?? "";
-			PointTypeLabel.Text = point.Type ?? "";
-			PointNumSatLabel.Text = Utils.GetUInt(point.NumSatellites);
-			PointDgpsAgeLabel.Text = Utils.GetDouble(point.AgeOfDgpsData);
-			PointDgpsIdLabel.Text = Utils.GetUInt(point.DgpsId);
-			PointLinksListView.ItemsSource = point.Links;
-		}
-	}
+    private void PointsListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        var point = (GpxPoint)e.Item;
+        if (point != null)
+        {
+            Navigation.PushAsync(new PointPage(point));
+        }
+    }
 
-	private void MapButton_Clicked(object sender, EventArgs e)
+    private void MapButton_Clicked(object sender, EventArgs e)
 	{
 	}
 
