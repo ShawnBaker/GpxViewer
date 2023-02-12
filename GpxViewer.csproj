@@ -51,6 +51,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\GraphPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MetadataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -78,6 +81,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Gpx\Gpx.csproj" />
+	  <ProjectReference Include="..\Gpx.Maui\Gpx.Maui.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
