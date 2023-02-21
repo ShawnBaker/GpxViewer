@@ -3,12 +3,13 @@
 public partial class MainPage : ContentPage
 {
     private bool enableSaveButton = false;
-    private List<string> BuiltinFiles = new List<string>()
+    private readonly List<string> BuiltinFiles = new()
     {
         "ashland.gpx",
         "blue_hills.gpx",
         "fells_loop.gpx",
         "foxboro.gpx",
+        "GX020042.gpx",
         "mystic_basin_trail.gpx"
     };
 
@@ -90,4 +91,9 @@ public partial class MainPage : ContentPage
         fileName = Path.Combine(Path.GetDirectoryName(Utils.gpx.FileName), fileName);
         await Utils.SaveFileAsync(fileName);
 	}
+
+    private void MapButton_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new MapPage(Utils.gpx));
+    }
 }

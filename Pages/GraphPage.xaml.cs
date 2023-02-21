@@ -127,21 +127,4 @@ public partial class GraphPage : ContentPage
         Graph.EndTime = originalEndTime + TimeSpan.FromMinutes((int)e.NewValue);
         EndTimeLabel.Text = Graph.EndTime.ToString("HH:mm:ss");
     }
-
-    private class ColorName
-	{
-		public string Name { get; set; }
-        public Color Color { get; set; }
-
-		public ColorName(string name, Color color)
-		{
-			Name = name;
-			Color = color;
-		}
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
 }

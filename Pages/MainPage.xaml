@@ -29,6 +29,7 @@
 				<Label Text="Version:" WidthRequest="90" VerticalTextAlignment="Start"/>
 				<Label x:Name="VersionLabel" WidthRequest="300" BackgroundColor="LightGray"/>
 			</HorizontalStackLayout>
+			<Button Text="Map" Clicked="MapButton_Clicked"/>
 		</VerticalStackLayout>
 	</ScrollView>
 

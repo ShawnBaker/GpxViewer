@@ -64,9 +64,14 @@ public partial class RoutesPage : ContentPage
 
 	private void MapButton_Clicked(object sender, EventArgs e)
 	{
-	}
+        var route = (GpxRoute)RoutesListView.SelectedItem;
+        if (route != null)
+        {
+            Navigation.PushAsync(new MapPage(route));
+        }
+    }
 
-	private void GraphButton_Clicked(object sender, EventArgs e)
+    private void GraphButton_Clicked(object sender, EventArgs e)
 	{
 	}
 }

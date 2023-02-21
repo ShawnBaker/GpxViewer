@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:gpx="clr-namespace:FrozenNorth.Gpx.Maui;assembly=FrozenNorth.Gpx.Maui"
+             x:Class="GpxViewer.MapPage">
+	
+    <VerticalStackLayout>
+		<gpx:GpxMap x:Name="Map" WidthRequest="300" HeightRequest="300"/>
+		<Grid RowDefinitions="*,*,*,*,*,*,*,*" ColumnDefinitions="*,*">
+			<Label Grid.Row="0" Grid.Column="0" Text="Show Routes" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+			<Switch Grid.Row="0" Grid.Column="1" x:Name="ShowRoutesSwitch" Toggled="ShowRoutesSwitch_Toggled"/>
+
+			<Label Grid.Row="1" Grid.Column="0" Text="Show Waypoints" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+			<Switch Grid.Row="1" Grid.Column="1" x:Name="ShowWaypointsSwitch" Toggled="ShowWaypointsSwitch_Toggled"/>
+
+			<Label Grid.Row="2" Grid.Column="0" Text="Show Tracks" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+			<Switch Grid.Row="2" Grid.Column="1" x:Name="ShowTracksSwitch" Toggled="ShowTracksSwitch_Toggled"/>
+
+			<Label Grid.Row="3" Grid.Column="0" Text="Reduction Tolerance" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+			<HorizontalStackLayout Grid.Row="3" Grid.Column="1">
+				<Label x:Name="ReductionToleranceLabel" WidthRequest="40" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+				<Stepper x:Name="ReductionToleranceStepper" Maximum=".0001" Increment="0.00001" ValueChanged="ReductionToleranceStepper_ValueChanged"/>
+			</HorizontalStackLayout>
+
+			<Label Grid.Row="4" Grid.Column="0" Text="Route Color" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+			<Picker Grid.Row="4" Grid.Column="1" x:Name="RouteColorPicker" SelectedIndexChanged="RouteColorPicker_SelectedIndexChanged"/>
+
+			<Label Grid.Row="5" Grid.Column="0" Text="Track Color" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/>
+			<Picker Grid.Row="5" Grid.Column="1" x:Name="TrackColorPicker" SelectedIndexChanged="TrackColorPicker_SelectedIndexChanged"/>
+
+			<Label Grid.Row="6" Grid.Column="0" Text="Number of Points" HorizontalOptions="End" Margin="0,0,10,0"/>
+			<Label Grid.Row="6" Grid.Column="1" x:Name="NumPointsLabel"/>
+
+			<Label Grid.Row="7" Grid.Column="0" Text="Number of Reduced Points" HorizontalOptions="End" Margin="0,0,10,0"/>
+			<Label Grid.Row="7" Grid.Column="1" x:Name="NumReducedPointsLabel"/>
+		</Grid>
+	</VerticalStackLayout>
+	
+</ContentPage>

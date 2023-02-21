@@ -54,6 +54,9 @@
 	  <MauiXaml Update="Pages\GraphPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\MapPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MetadataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

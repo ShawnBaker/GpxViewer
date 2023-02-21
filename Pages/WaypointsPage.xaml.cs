@@ -31,5 +31,9 @@ public partial class WaypointsPage : ContentPage
 
 	private void MapButton_Clicked(object sender, EventArgs e)
 	{
-	}
+        if (Utils.gpx.Waypoints != null)
+        {
+            Navigation.PushAsync(new MapPage(Utils.gpx.Waypoints));
+        }
+    }
 }

@@ -69,9 +69,14 @@ public partial class TracksPage : ContentPage
 
     private void MapButton_Clicked(object sender, EventArgs e)
 	{
-	}
+        var track = (GpxTrack)TracksListView.SelectedItem;
+        if (track != null)
+        {
+            Navigation.PushAsync(new MapPage(track));
+        }
+    }
 
-	private void GraphButton_Clicked(object sender, EventArgs e)
+    private void GraphButton_Clicked(object sender, EventArgs e)
 	{
 		var track = (GpxTrack)TracksListView.SelectedItem;
 		if (track != null)
